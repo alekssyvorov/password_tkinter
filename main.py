@@ -1,118 +1,64 @@
-# s = "Hello World!"
-# new = s.lower()
-# print(new)
-# new = s.upper()
-# print(new)
-# print(s)
-# s = "hELLO world!"
-# print(s.title())
-# # s = input('Y/N').upper()
-# s = "hELLO world!"
-# print(s.capitalize())
-# print(s.swapcase())
-# s = "Hello World!"
-# print(s.count('T'))
-#
-# print(s.index('W'))
-# print(s.index('o', 5, 8))
-# # print(s.index('A'))
-# print(s.rindex('d'))
-# print(s.index('d'))
-# s = "Hello World!"
-# print(s.replace('e', 'i'))
-# print(s.replace('l', 'L', 2))
-#
-# path = "C:\Windows\Help\OEM\IndexStore"
-#
-# path = path.replace('\\', '/')
-# print(path)
-# s = "Hello"
-# new = s.center(20, "#")
-# print(new)
-# print(len(new))
-# new = s.ljust(20, "$")
-# print(new)
-# print(len(new))
+from tkinter import *
+from tkinter import messagebox
+import pickle
 
-# path = "C:\Wiiiindows\Help\OEM\HndexStore"
 
-# print(path.find('H', 12))
-# print(path.find('A'))
-# print(path.find('H', path.find('H')+1))
-# print(path.rfind("H"))
-# path = "C:\Wiiiindows\Help\OEM\HndexStore.png"
-# print(path.startswith("C:"))
-# print(path.startswith("D:"))
-# path = "C:\Wiiiindows\Help\OEM\HndexStore.png"
-# print(path.endswith('.png'))
-# print(path.endswith('.jpg'))
+def registration():
+   label_error = None
 
-s = '0123456789'
-#06784563214
-# print(s.isdigit())
-# print(s.isnumeric())
+   frame = Frame(root, bd=10)
+   frame.place(relx=0.15, rely=0.2, relwidth=0.7, relheight=0.6)
 
-# s = '  QWERTY1   '
-# # s = s.strip()
-# # s = s.lstrip()
-# s = s.rstrip()
-# print(s)
-# print(s.isdigit())
-# print(s.isnumeric())
-# print(s.isalpha())
-# print(s.isupper())
-# print(s.isalnum())
-# s = "Hello World!"
-# s = s.replace(' ', '')
-# s = s[:-1]
-# s = s[:len(s)]
-# print(s.isalpha())
-# print(s)
-# s = "        "
-# print(s.isspace())
-s = "Hello-world-!"
-# print(s.istitle())
+   label = Label(frame, text='Sing Up', font='16')
+   label.place(relwidth=1, relheight=0.1)
 
-# new = s.split('-')
-# print(new)
-# s = '10.2'
-# print(s.isdecimal())
-# s = "Hello\t\tworld!"
-# print(s)
-#
-# print(s.expandtabs(tabsize=12))
-s = "Hello world!"
-print(s.zfill(20))
+   label_login = Label(frame, text="Login:")
+   # label_login.place(relx=0.1, rely=0.2)
+   label_login.place(rely=0.2, relwidth=0.35, relheight=0.1)
 
-# Пользователь вводит с клавиатуры строку. Произведите
-# поворот строк и полученный результат выведите
-# на экран.
+   login_entry = Entry(frame)
+   login_entry.place(rely=0.2, relx=0.4, relwidth=0.55)
 
-# s = 'start' # -> 'trats'
-# # 5
-# for i in range(-1, (len(s)*(-1)-1), -1):
-#     print(s[i], end='')
-# print()
-# print(s[::-1])
-# Пользователь вводит с клавиатуры строку. Посчитайте
-# количество букв, цифр в строке. Выведите оба
-# количества на экран.
+   label_password1 = Label(frame, text="Password:")
+   label_password1.place(rely=0.4, relwidth=0.35, relheight=0.1)
 
-# s = input('Input s ') # f4sdf4sd4fgg45t
-# count_alpha = 0
-# count_number = 0
-# for elem in s:
-#     if elem.isalpha():
-#         count_alpha += 1
-#     elif elem.isdigit():
-#         count_number += 1
-#
-# print('Symbol', count_alpha, 'Number', count_number)
-st = input('Input string ')
-symbol = input('Input symbol ')
-count = 0
-for elem in st:
-    if elem == symbol:
-        count += 1
-print(count)
-print(st.count(symbol))
+   password1_entry = Entry(frame, show='*')
+   password1_entry.place(rely=0.4, relx=0.4, relwidth=0.55)
+
+   label_password2 = Label(frame, text="Confirm \npassword:")
+   label_password2.place(rely=0.55, relwidth=0.35, relheight=0.2)
+
+   password2_entry = Entry(frame, show='*')
+   password2_entry.place(rely=0.6, relx=0.4, relwidth=0.55)
+
+   button = Button(frame, text='Sing up')
+   button.place(relx=0.45, rely=0.8, relwidth=0.3)
+
+def login_form():
+    print('login_form')
+    pass
+
+
+HEIGHT = 600
+WIDTH = 550
+
+root = Tk()
+root.title('Login and Password')
+# root.geometry("550x550")
+root.geometry(f"{HEIGHT}x{WIDTH}")
+root.resizable(False, False)
+
+root.option_add('*Font', 'Calibri')
+root.option_add('*Background', 'white')
+
+img = PhotoImage(file='img/bg2.gif')
+background_label = Label(root, image=img)
+background_label.place(relwidth=1, relheight=1)
+
+button_signup = Button(root, text="SING UP", bg='gold', command=registration)
+button_signup.place(relx=0.15, rely=0.1, relwidth=0.3)
+
+button_signin = Button(root, text="SING IN", bg='gold', command=login_form)
+button_signin.place(relx=0.55, rely=0.1, relwidth=0.3)
+
+root.mainloop()
